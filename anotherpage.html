@@ -13,8 +13,8 @@
             margin: 0;
             padding: 0;
             text-align: center;
-            position: relative;
-            overflow: hidden; /* Hide overflow content */
+            overflow-x: hidden; /* Hide horizontal overflow */
+            overflow-y: auto; /* Enable vertical scroll */
         }
 
         h1 {
@@ -29,8 +29,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative; /* Ensure the social links appear above the GIFs */
-            z-index: 1; /* Ensure the social links appear above the GIFs */
+            position: relative;
+            z-index: 1;
         }
 
         .social-link {
@@ -50,35 +50,24 @@
         }
 
         .alien-gif {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            pointer-events: none; /* Make sure the GIFs don't capture mouse events */
-            animation: animateAlienGif linear infinite; /* Set the animation */
-        }
-
-        /* Define keyframes for animation */
-        @keyframes animateAlienGif {
-            0% {
-                transform: translate(0, 0); /* Initial position */
-            }
-            100% {
-                transform: translate(50%, 50%); /* Translate to cover the entire screen */
-            }
+            pointer-events: none;
+            z-index: -1;
         }
     </style>
 </head>
 
 <body>
     <!-- Alien GIFs -->
-    <img class="alien-gif" src="images/aliendance.gif" alt="Alien Dance GIF" style="animation-duration: 10s; z-index: -1;">
-    <img class="alien-gif" src="images/aliendance.gif" alt="Alien Dance GIF" style="animation-duration: 15s; z-index: -1;">
-    <img class="alien-gif" src="images/aliendance.gif" alt="Alien Dance GIF" style="animation-duration: 20s; z-index: -1;">
-    <img class="alien-gif" src="images/aliendance.gif" alt="Alien Dance GIF" style="animation-duration: 25s; z-index: -1;">
-    <img class="alien-gif" src="images/aliendance.gif" alt="Alien Dance GIF" style="animation-duration: 30s; z-index: -1;">
+    <img class="alien-gif" src="images/aliendance.gif" alt="Alien Dance GIF">
+    <img class="alien-gif" src="images/aliendance.gif" alt="Alien Dance GIF">
+    <img class="alien-gif" src="images/aliendance.gif" alt="Alien Dance GIF">
+    <img class="alien-gif" src="images/aliendance.gif" alt="Alien Dance GIF">
+    <img class="alien-gif" src="images/aliendance.gif" alt="Alien Dance GIF">
 
     <h1>My Socials</h1>
     <div class="socials">
@@ -99,18 +88,6 @@
         <a href="https://www.twitch.tv/thecoach1984" class="social-link">Twitch: thecoach1984</a>
         <a href="https://www.reddit.com/user/thepikachutamer" class="social-link">Reddit: thepikachutamer</a>
     </div>
-
-    <!-- Button to go back to home page -->
-    <a href="index.html" class="social-link" style="margin-top: 50px;">Go Back to Home Page</a>
-
-    <script>
-        // Randomly rotate each alien GIF
-        const alienGifs = document.querySelectorAll('.alien-gif');
-        alienGifs.forEach(gif => {
-            const rotation = Math.random() * 360;
-            gif.style.transform = `rotate(${rotation}deg)`;
-        });
-    </script>
 </body>
 
 </html>

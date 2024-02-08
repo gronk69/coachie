@@ -13,31 +13,24 @@
             margin: 0;
             padding: 0;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* Ensure full viewport height */
         }
 
         .banner {
             background-image: url("images/IMG_2311.jpeg"); /* Relative path to the image */
             background-size: cover;
+            background-position: center; /* Center the image */
             width: 100%; /* Ensure full width */
-            height: 600px; /* Adjust height as needed */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+            height: 300px; /* Adjust height as needed */
         }
 
         h1 {
             font-size: 3em; /* Big text size */
-            margin-top: 20px; /* Margin top for the welcome text */
+            margin-top: 0; /* Remove margin */
+            padding-top: 100px; /* Adjust to vertically center the text */
         }
 
         .welcome-text {
-            margin-top: 50px; /* Margin top for the welcome text */
+            margin-top: 20px; /* Margin top for the welcome text */
         }
     </style>
 </head>
@@ -47,7 +40,7 @@
         <!-- Banner with welcome text -->
         <h1>Welcome to Our Website</h1>
     </div>
-    <!-- Welcome text centered on the page -->
+    <!-- Welcome text below the banner -->
     <div class="welcome-text">
         <h2>Explore our amazing content!</h2>
     </div>

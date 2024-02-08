@@ -9,7 +9,6 @@
         body {
             background-color: #000000; /* Black background color */
             color: #FFFFFF; /* White text color */
-            font-family: 'Comic Sans MS', cursive; /* Comic Sans MS font */
             margin: 0;
             padding: 0;
             text-align: center;
@@ -46,7 +45,31 @@
             font-size: 1.5em; /* Medium text size */
             margin-top: 10px;
             font-family: 'Comic Sans MS'; /* Use Comic Sans MS font */
-            src: url("comic-sans-ms/comici.ttf"); /* Custom font path */
+        }
+
+        /* Define Comic Sans MS font using provided @font-face rule */
+        @font-face {
+            font-family: 'Comic Sans MS';
+            src: url("comic-sans-ms/comici.ttf");
+        }
+
+        /* Style for the spooky button */
+        .spooky-button {
+            background-color: #660066; /* Purple background color */
+            color: #FF6600; /* Orange text color */
+            border: 3px solid #FF6600; /* Orange border */
+            font-family: 'Impact', sans-serif; /* Use Impact font */
+            font-size: 1.2em; /* Medium text size */
+            padding: 10px 20px; /* Padding */
+            margin-top: 20px; /* Top margin */
+            text-decoration: none; /* Remove underline */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s, color 0.3s; /* Smooth color transition */
+        }
+
+        .spooky-button:hover {
+            background-color: #FF6600; /* Orange background color on hover */
+            color: #660066; /* Purple text color on hover */
         }
     </style>
 </head>
@@ -56,33 +79,36 @@
     <div class="video-gallery">
         <div class="video-item">
             <video controls>
-                <source src="images/kavkaz.mp4" type="video/mp4">
+                <source src="images/placeholder.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            <p class="video-name">The Donkey of Death.....</p>
+            <p class="video-name">placeholder1</p>
         </div>
         <div class="video-item">
             <video controls>
-                <source src="images/v09044g40000cgn401jc77u1716o7lk0.mp4" type="video/mp4">
+                <source src="images/placeholder.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            <p class="video-name">The cAT murdererer.......</p>
+            <p class="video-name">placeholder2</p>
         </div>
         <div class="video-item">
             <video controls>
-                <source src="images/videoplayback (2).mp4" type="video/mp4">
+                <source src="images/placeholder.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            <p class="video-name">REAL kidnapping footage</p>
+            <p class="video-name">placeholder3</p>
         </div>
         <div class="video-item">
             <video controls>
-                <source src="images/ufo-alien.mp4" type="video/mp4">
+                <source src="images/placeholder.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            <p class="video-name">aliens proof?!?!? hidden governemnt secret</p>
+            <p class="video-name">placeholder4</p>
         </div>
     </div>
+
+    <!-- Button to go back to home page -->
+    <a href="index.html" class="spooky-button">Return to Home Page</a>
 </body>
 
 </html>

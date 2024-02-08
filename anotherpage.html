@@ -36,13 +36,10 @@
 
         .social-link {
             display: inline-block;
-            background-color: #660099; /* Purple background color */
-            color: #ff00ff; /* Magenta text color */
             font-size: 2em; /* Larger font size */
             padding: 20px 40px; /* Increased padding */
             margin-bottom: 40px; /* Larger margin bottom */
             text-decoration: none;
-            border: 5px solid #00ffff; /* Cyan border */
             transition: background-color 0.3s, color 0.3s; /* Smooth color transition */
         }
 
@@ -52,12 +49,19 @@
             border-color: #ff0000; /* Red border color on hover */
         }
 
-        /* Frutiger Aero buttons */
-        .frutiger-aero {
-            font-family: 'Frutiger', sans-serif; /* Use Frutiger font for some buttons */
+        /* Different fonts and colors for buttons */
+        .social-link:nth-child(odd) {
             background-color: #ffcc00; /* Yellow background color */
             color: #0000ff; /* Blue text color */
-            border-color: #ff00ff; /* Magenta border color */
+            border: 5px solid #00ffff; /* Cyan border */
+            font-family: 'Frutiger', sans-serif; /* Use Frutiger font for some buttons */
+        }
+
+        .social-link:nth-child(even) {
+            background-color: #660099; /* Purple background color */
+            color: #ff00ff; /* Magenta text color */
+            border: 5px solid #00ffff; /* Cyan border */
+            font-family: 'Arial', sans-serif; /* Use Arial font for some buttons */
         }
     </style>
 </head>
@@ -70,15 +74,15 @@
         <a href="https://www.crunchyroll.com" class="social-link">Crunchyroll: EgirlUwUKissMe</a>
         <a href="https://www.riotgames.com" class="social-link">Riot Games: TheCoach#1337</a>
         <a href="https://www.playstation.com" class="social-link">PlayStation: thepikachutamery</a>
-        <a href="https://www.leagueoflegends.com" class="social-link frutiger-aero">League of Legends: poopmam</a>
+        <a href="https://www.leagueoflegends.com" class="social-link">League of Legends: poopmam</a>
         <a href="https://www.xbox.com" class="social-link">Xbox: thepikachutamer</a>
         <a href="https://twitter.com/mlgthecoach/" class="social-link">Twitter: mlgthecoach</a>
-        <a href="https://www.instagram.com/slimeball516/" class="social-link frutiger-aero">Instagram: slimeball516</a>
+        <a href="https://www.instagram.com/slimeball516/" class="social-link">Instagram: slimeball516</a>
         <a href="https://www.youtube.com/channel/UCUbdRYQ_naz0XY59mSCrr0Q" class="social-link">YouTube: My Channel</a>
-        <a href="https://open.spotify.com/user/c9deeiwxzylqtw92jrqe0m9cx?si=04c1f81a29ae4c6d&nd=1&dlsi=3cc4e29e38c44f86" class="social-link frutiger-aero">Spotify: My Playlist</a>
+        <a href="https://open.spotify.com/user/c9deeiwxzylqtw92jrqe0m9cx?si=04c1f81a29ae4c6d&nd=1&dlsi=3cc4e29e38c44f86" class="social-link">Spotify: My Playlist</a>
         <a href="https://www.ebay.com/usr/grumbus17" class="social-link">eBay: grumbus17</a>
         <a href="https://github.com/gronk69" class="social-link">GitHub: gronk69</a>
-        <a href="https://steamcommunity.com/id/coachiex3/" class="social-link frutiger-aero">Steam: coachiex3</a>
+        <a href="https://steamcommunity.com/id/coachiex3/" class="social-link">Steam: coachiex3</a>
         <a href="https://www.twitch.tv/thecoach1984" class="social-link">Twitch: thecoach1984</a>
         <a href="https://www.reddit.com/user/thepikachutamer" class="social-link">Reddit: thepikachutamer</a>
     </div>

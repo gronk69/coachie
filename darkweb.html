@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Web Video Gallery</title>
+    <style>
+        body {
+            background-color: #000000; /* Black background color */
+            color: #FFFFFF; /* White text color */
+            font-family: 'Comic Sans MS', cursive; /* Comic Sans MS font */
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em; /* Large text size */
+            margin-top: 20px;
+            font-family: 'Impact', sans-serif; /* Use Impact font */
+            color: #ff0000; /* Red text color */
+            text-shadow: 2px 2px 2px #000000; /* Light black text shadow */
+        }
+
+        .video-gallery {
+            margin-top: 50px; /* Increased margin top */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .video-item {
+            margin: 20px;
+        }
+
+        .video-item video {
+            width: 300px; /* Set video width */
+            height: 200px; /* Set video height */
+            border: 5px solid #ff0000; /* Red border */
+            border-radius: 10px; /* Rounded border */
+            outline: none; /* Remove default outline */
+        }
+
+        .video-name {
+            font-size: 1.5em; /* Medium text size */
+            margin-top: 10px;
+            font-family: 'Comic Sans MS'; /* Use Comic Sans MS font */
+            src: url("comic-sans-ms/comici.ttf"); /* Custom font path */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Dark Web Video Gallery</h1>
+    <div class="video-gallery">
+        <div class="video-item">
+            <video controls>
+                <source src="images/kavkaz.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="video-name">The Donkey of Death.....</p>
+        </div>
+        <div class="video-item">
+            <video controls>
+                <source src="images/v09044g40000cgn401jc77u1716o7lk0.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="video-name">The cAT murdererer.......</p>
+        </div>
+        <div class="video-item">
+            <video controls>
+                <source src="images/videoplayback (2).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="video-name">REAL kidnapping footage</p>
+        </div>
+        <div class="video-item">
+            <video controls>
+                <source src="images/ufo-alien.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="video-name">aliens proof?!?!? hidden governemnt secret</p>
+        </div>
+    </div>
+</body>
+
+</html>

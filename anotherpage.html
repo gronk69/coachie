@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Socials</title>
     <style>
+        /* Define @font-face for Comic Sans MS */
+        @font-face {
+            font-family: 'Comic Sans MS';
+            src: url("comic-sans-ms/comici.ttf");
+        }
+
         body {
             background-color: #ff00ff; /* Hot pink background color */
             color: #00ff00; /* Neon green text color */
@@ -41,28 +47,16 @@
             margin-bottom: 40px; /* Larger margin bottom */
             text-decoration: none;
             transition: background-color 0.3s, color 0.3s; /* Smooth color transition */
-            font-family: 'comic-sans-ms/comici.ttf'; /* Use custom Comic Sans MS font */
+            font-family: 'Comic Sans MS', cursive; /* Use Comic Sans MS font */
         }
 
         .social-link:hover {
-            background-color: #00ff00; /* Green background color on hover */
+            background-color: #ffcc00; /* Yellow background color on hover */
             color: #0000ff; /* Blue text color on hover */
-            border-color: #ff0000; /* Red border color on hover */
+            border: 5px solid #00ffff; /* Cyan border color on hover */
         }
-
-        /* Different fonts and colors for buttons */
-        .font-comic-sans {
-            font-family: 'comic-sans-ms/comic.ttf', cursive; /* Use Comic Sans MS font */
-        }
-
-        .font-arial {
-            font-family: 'Arial', sans-serif; /* Use Arial font */
-        }
-
-        .font-times-new-roman {
-            font-family: 'Times New Roman', serif; /* Use Times New Roman font */
-        }
-
+        
+        /* Custom color combinations */
         .color-combination-1 {
             background-color: #ffcc00; /* Yellow background color */
             color: #0000ff; /* Blue text color */
@@ -92,23 +86,23 @@
 <body>
     <h1>My Socials</h1>
     <div class="socials">
-        <a href="https://discord.com" class="social-link font-comic-sans color-combination-1">Discord: coachie</a>
-        <a href="https://www.blizzard.com" class="social-link font-arial color-combination-2">Blizzard: pikachutamer#2578</a>
-        <a href="https://www.crunchyroll.com" class="social-link font-times-new-roman color-combination-3">Crunchyroll: EgirlUwUKissMe</a>
-        <a href="https://www.riotgames.com" class="social-link font-comic-sans color-combination-4">Riot Games: TheCoach#1337</a>
-        <a href="https://www.playstation.com" class="social-link font-arial color-combination-1">PlayStation: thepikachutamery</a>
-        <a href="https://www.leagueoflegends.com" class="social-link font-times-new-roman color-combination-2">League of Legends: poopmam</a>
-        <a href="https://www.xbox.com" class="social-link font-comic-sans color-combination-3">Xbox: thepikachutamer</a>
-        <a href="https://twitter.com/mlgthecoach/" class="social-link font-arial color-combination-4">Twitter: mlgthecoach</a>
-        <a href="https://www.instagram.com/slimeball516/" class="social-link font-times-new-roman color-combination-1">Instagram: slimeball516</a>
-        <a href="https://www.youtube.com/channel/UCUbdRYQ_naz0XY59mSCrr0Q" class="social-link font-comic-sans color-combination-2">YouTube: My Channel</a>
-        <a href="https://open.spotify.com/user/c9deeiwxzylqtw92jrqe0m9cx?si=04c1f81a29ae4c6d&nd=1&dlsi=3cc4e29e38c44f86" class="social-link font-arial color-combination-3">Spotify: My Playlist</a>
-        <a href="https://www.ebay.com/usr/grumbus17" class="social-link font-times-new-roman color-combination-4">eBay: grumbus17</a>
-        <a href="https://github.com/gronk69" class="social-link font-comic-sans color-combination-1">GitHub: gronk69</a>
-        <a href="https://steamcommunity.com/id/coachiex3/" class="social-link font-arial color-combination-2">Steam: coachiex3</a>
-        <a href="https://www.twitch.tv/fluxsed" class="social-link font-times-new-roman color-combination-3">Twitch: Not Mine (Bad)</a>
-        <a href="https://www.twitch.tv/thecoach1984" class="social-link font-comic-sans color-combination-4">Twitch: thecoach1984</a>
-        <a href="https://www.reddit.com/user/thepikachutamer" class="social-link font-arial color-combination-1">Reddit: thepikachutamer</a>
+        <a href="https://discord.com" class="social-link color-combination-1">Discord: coachie</a>
+        <a href="https://www.blizzard.com" class="social-link color-combination-2">Blizzard: pikachutamer#2578</a>
+        <a href="https://www.crunchyroll.com" class="social-link color-combination-3">Crunchyroll: EgirlUwUKissMe</a>
+        <a href="https://www.riotgames.com" class="social-link color-combination-4">Riot Games: TheCoach#1337</a>
+        <a href="https://www.playstation.com" class="social-link color-combination-1">PlayStation: thepikachutamery</a>
+        <a href="https://www.leagueoflegends.com" class="social-link color-combination-2">League of Legends: poopmam</a>
+        <a href="https://www.xbox.com" class="social-link color-combination-3">Xbox: thepikachutamer</a>
+        <a href="https://twitter.com/mlgthecoach/" class="social-link color-combination-4">Twitter: mlgthecoach</a>
+        <a href="https://www.instagram.com/slimeball516/" class="social-link color-combination-1">Instagram: slimeball516</a>
+        <a href="https://www.youtube.com/channel/UCUbdRYQ_naz0XY59mSCrr0Q" class="social-link color-combination-2">YouTube: My Channel</a>
+        <a href="https://open.spotify.com/user/c9deeiwxzylqtw92jrqe0m9cx?si=04c1f81a29ae4c6d&nd=1&dlsi=3cc4e29e38c44f86" class="social-link color-combination-3">Spotify: My Playlist</a>
+        <a href="https://www.ebay.com/usr/grumbus17" class="social-link color-combination-4">eBay: grumbus17</a>
+        <a href="https://github.com/gronk69" class="social-link color-combination-1">GitHub: gronk69</a>
+        <a href="https://steamcommunity.com/id/coachiex3/" class="social-link color-combination-2">Steam: coachiex3</a>
+        <a href="https://www.twitch.tv/fluxsed" class="social-link color-combination-3">Twitch: Not Mine (Bad)</a>
+        <a href="https://www.twitch.tv/thecoach1984" class="social-link color-combination-4">Twitch: thecoach1984</a>
+        <a href="https://www.reddit.com/user/thepikachutamer" class="social-link color-combination-1">Reddit: thepikachutamer</a>
     </div>
 
     <!-- Button to go back to home page -->

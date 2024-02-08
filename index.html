@@ -53,6 +53,23 @@
             position: relative; /* Set position to relative to contain absolutely positioned elements */
             z-index: 1; /* Ensure the text appears above the GIF */
         }
+
+        .btn {
+            display: inline-block;
+            background-color: #660099; /* Dark purple background color for the button */
+            color: #ffffff; /* White text color */
+            font-family: 'Comic Sans MS', cursive; /* Comic Sans MS font */
+            font-size: 1.5em; /* Button text size */
+            padding: 10px 20px; /* Padding for the button */
+            margin-bottom: 20px; /* Margin at the bottom */
+            text-decoration: none; /* Remove default underline */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s; /* Smooth transition for hover effect */
+        }
+
+        .btn:hover {
+            background-color: #4b0082; /* Darker purple background color on hover */
+        }
     </style>
 </head>
 
@@ -66,7 +83,8 @@
     <div class="welcome-text">
         <p>H-h-hello there, lovelies! Nyaaa~ W-welcome to my whimsical corner of the web! 🌟 Prepare p-p-prepare yourselves for a journey through a magical realm where imagination knows no bounds! Nya~ T-t-together, we'll explore a world filled with delightful surprises, captivating stories, and p-p-plenty of quirky adventures! S-so, g-g-grab your virtual passport and get ready for an unforgettable experience on my funky website! 🥺🎉✨</p>
     </div>
-    <!-- Other content of the website goes here -->
+    <!-- Button to another page -->
+    <a href="anotherpage.html" class="btn">Go to Another Page</a>
 </body>
 
 </html>

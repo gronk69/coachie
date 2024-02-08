@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rice Purity Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+        }
+        ol {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+        }
+        #itemInput {
+            margin-bottom: 10px;
+        }
+        #itemInput, #addItemBtn, #showListBtn {
+            display: block;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Rice Purity Test</h1>
+        <div id="inputSection">
+            <textarea id="itemInput" placeholder="Enter items separated by lines or commas"></textarea>
+            <button id="addItemBtn">Add Item(s)</button>
+            <button id="showListBtn">Show List</button>
+        </div>
+        <form id="ricePurityForm" style="display: none;">
+            <ol id="itemList"></ol>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById("addItemBtn").addEventListener("click", function() {
+            var itemInput = document.getElementById("itemInput");
+            var itemList = document.getElementById("itemList");
+            var inputText = itemInput.value.trim();
+            if (inputText !== "") {
+                var items = inputText.split(/\n|,/).map(function(item) {
+                    return item.trim();
+                }).filter(function(item) {
+                    return item !== "";
+                });
+                items.forEach(function(newItem) {
+                    var li = document.createElement("li");
+                    li.innerHTML = '<label><input type="checkbox" name="item">' + newItem + '</label>';
+                    itemList.appendChild(li);
+                });
+                itemInput.value = "";
+            }
+        });
+
+        document.getElementById("showListBtn").addEventListener("click", function() {
+            var inputSection = document.getElementById("inputSection");
+            var form = document.getElementById("ricePurityForm");
+            inputSection.style.display = "none";
+            form.style.display = "block";
+        });
+
+        document.getElementById("ricePurityForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            var checkedCount = 0;
+            checkboxes.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    checkedCount++;
+                }
+            });
+            var totalItems = checkboxes.length;
+            var resultDiv = document.getElementById("result");
+            resultDiv.textContent = "You ticked " + checkedCount + " out of " + totalItems + " items.";
+        });
+    </script>
+</body>
+</html>

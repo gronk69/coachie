@@ -33,6 +33,7 @@
             margin-bottom: -4px; /* Move the banner to touch the top of the page */
             padding-top: 50px; /* Adjust padding to vertically center the text */
             position: relative; /* Set position to relative to contain absolutely positioned elements */
+            z-index: 1; /* Ensure the banner appears above the GIF */
         }
 
         h1 {
@@ -41,7 +42,7 @@
             font-family: 'Comic Sans MS', cursive; /* Apply Comic Sans MS font */
             color: #660099; /* Dark purple color for top text */
             position: relative; /* Set position to relative to contain absolutely positioned elements */
-            z-index: 1; /* Ensure the text appears above the GIF */
+            z-index: 2; /* Ensure the text appears above the GIF */
         }
 
         .welcome-text {
@@ -51,7 +52,7 @@
             font-size: 2em; /* Increased font size */
             padding: 20px; /* Add some padding for a nostalgic feel */
             position: relative; /* Set position to relative to contain absolutely positioned elements */
-            z-index: 1; /* Ensure the text appears above the GIF */
+            z-index: 2; /* Ensure the text appears above the GIF */
         }
 
         .btn {
@@ -70,6 +71,12 @@
         .btn:hover {
             background-color: #4b0082; /* Darker purple background color on hover */
         }
+
+        /* Define @font-face for Comic Sans MS */
+        @font-face {
+            font-family: 'Comic Sans MS';
+            src: url('comic-sans-ms/comici.ttf') format('truetype'); /* Relative path to the font file */
+        }
     </style>
 </head>
 
@@ -85,6 +92,8 @@
     </div>
     <!-- Button to another page -->
     <a href="anotherpage.html" class="btn">Go to Another Page</a>
+    <!-- Button to site.html -->
+    <a href="site.html" class="btn">Custom Rice Purity Test</a>
 </body>
 
 </html>

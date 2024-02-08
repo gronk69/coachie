@@ -12,6 +12,16 @@
             margin: 0;
             padding: 0;
             text-align: center;
+            position: relative; /* Set position to relative to contain absolutely positioned elements */
+        }
+
+        .gif-background {
+            position: absolute; /* Position the GIF absolutely */
+            top: 0;
+            left: 0;
+            width: 100%; /* Cover the entire width */
+            height: 100%; /* Cover the entire height */
+            z-index: -1; /* Place the GIF behind other elements */
         }
 
         .banner {
@@ -22,6 +32,7 @@
             height: 300px; /* Adjust height as needed */
             margin-bottom: -4px; /* Move the banner to touch the top of the page */
             padding-top: 50px; /* Adjust padding to vertically center the text */
+            position: relative; /* Set position to relative to contain absolutely positioned elements */
         }
 
         h1 {
@@ -29,23 +40,24 @@
             margin-top: 20px; /* Adjusted margin top to lower the text */
             font-family: 'Comic Sans MS', cursive; /* Apply Comic Sans MS font */
             color: #660099; /* Dark purple color for top text */
+            position: relative; /* Set position to relative to contain absolutely positioned elements */
+            z-index: 1; /* Ensure the text appears above the GIF */
         }
 
         .welcome-text {
             margin-top: 20px; /* Margin top for the welcome text */
             font-family: 'Comic Sans MS', cursive; /* Apply Comic Sans MS font */
-            background: linear-gradient(to right, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3); /* Rainbow gradient background */
-            display: inline; /* Make the paragraph inline */
             color: #000000; /* Black text color for retro look */
             font-size: 2em; /* Increased font size */
             padding: 20px; /* Add some padding for a nostalgic feel */
-            -webkit-background-clip: text; /* Clip text to the background area */
-            -webkit-text-fill-color: transparent; /* Make text transparent */
+            position: relative; /* Set position to relative to contain absolutely positioned elements */
+            z-index: 1; /* Ensure the text appears above the GIF */
         }
     </style>
 </head>
 
 <body>
+    <img class="gif-background" src="images/gif.gif" alt=""> <!-- GIF background -->
     <div class="banner">
         <!-- Banner with welcome text -->
         <h1>Welcome to my website! Nya~</h1>

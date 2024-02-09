@@ -93,34 +93,37 @@
             memeGallery.appendChild(memeContainer);
         }
 
-        function saveMemeUrl(url) {
-            // Construct the URL to the GitHub repository's API
-            var apiUrl = 'https://api.github.com/repos/coachie/meme-gallery/contents/memes.json';
-
-            // Prepare the data to be sent
-            var data = {
-                message: 'Add new meme',
-                content: btoa(JSON.stringify({ url: url })),
-            };
-
-            // Send a POST request to add the meme URL
-            fetch(apiUrl, {
-                method: 'POST',
-                headers: {
-                    'Authorization': 'token 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', // Replace with your GitHub token
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            })
-            .then(response => {
-                if (!response.ok) {
+        async function saveMemeUrl(url) {
+            try {
+                const response = await fetch('https://api.github.com/repos/coachie/meme-gallery/contents/memes.json', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': 'token YOUR_GITHUB_TOKEN', // Replace with your GitHub token
+                    },
+                });
+                const data = await response.json();
+                const content = JSON.parse(atob(data.content));
+                content.push({ url: url });
+                const encodedContent = btoa(JSON.stringify(content));
+                const putResponse = await fetch('https://api.github.com/repos/coachie/meme-gallery/contents/memes.json', {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': 'token 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', // Replace with your GitHub token
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: 'Add new meme',
+                        content: encodedContent,
+                        sha: data.sha,
+                    }),
+                });
+                if (!putResponse.ok) {
                     throw new Error('Failed to add meme URL');
                 }
                 console.log('Meme URL added successfully');
-            })
-            .catch(error => {
+            } catch (error) {
                 console.error('Error:', error);
-            });
+            }
         }
     </script>
 </body>

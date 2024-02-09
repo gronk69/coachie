@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,6 +36,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Ugly Meme Gallery</h1>
@@ -42,25 +44,26 @@
     </div>
 
     <script>
-        async function loadMemes() {
-            try {
-                const response = await fetch('https://raw.githubusercontent.com/coachie/meme-gallery/memes.json');
-                const data = await response.json();
-                const memeGallery = document.querySelector('.meme-gallery');
-                data.forEach(meme => {
-                    const memeContainer = document.createElement('div');
-                    memeContainer.classList.add('meme');
-                    const memeImg = document.createElement('img');
-                    memeImg.src = meme.url;
-                    memeContainer.appendChild(memeImg);
-                    memeGallery.appendChild(memeContainer);
-                });
-            } catch (error) {
-                console.error('Error loading memes:', error);
-            }
-        }
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('memes.txt') // Fetch the text file
+                .then(response => response.text()) // Convert the response to text
+                .then(data => {
+                    const urls = data.split('\n').filter(url => url.trim() !== ''); // Split the text into an array of URLs
+                    urls.forEach(url => addMemeToGallery(url)); // Add each URL to the meme gallery
+                })
+                .catch(error => console.error('Error fetching memes:', error));
+        });
 
-        loadMemes();
+        function addMemeToGallery(url) {
+            var memeGallery = document.querySelector('.meme-gallery');
+            var memeContainer = document.createElement('div');
+            memeContainer.classList.add('meme');
+            var memeImg = document.createElement('img');
+            memeImg.src = url;
+            memeContainer.appendChild(memeImg);
+            memeGallery.appendChild(memeContainer);
+        }
     </script>
 </body>
+
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funny Meme Gallery</title>
+    <title>Ugly Meme Gallery</title>
     <style>
         body {
             font-family: 'Comic Sans MS', cursive;
@@ -33,32 +33,36 @@
             max-width: 100%;
             height: auto;
         }
+
+        .back-button {
+            background-color: #ff0000; /* Red background color */
+            color: #00ffff; /* Cyan text color */
+            border: 5px solid #ffff00; /* Yellow border */
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition */
+        }
+
+        .back-button:hover {
+            background-color: #00ff00; /* Green background color on hover */
+            color: #ff00ff; /* Magenta text color on hover */
+            border-color: #0000ff; /* Blue border color on hover */
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Funny Meme Gallery</h1>
+        <h1>Ugly Meme Gallery</h1>
         <div class="meme-gallery"></div>
+        <button class="back-button" onclick="goToHomePage()">Go Back to Home Page</button>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            fetch('memes.txt')
-            .then(response => response.text())
-            .then(text => {
-                const urls = text.split('\n').filter(url => url.trim() !== '');
-                const memeGallery = document.querySelector('.meme-gallery');
-                urls.forEach(url => {
-                    const memeContainer = document.createElement('div');
-                    memeContainer.classList.add('meme');
-                    const memeImg = document.createElement('img');
-                    memeImg.src = url;
-                    memeContainer.appendChild(memeImg);
-                    memeGallery.appendChild(memeContainer);
-                });
-            })
-            .catch(error => console.error('Error fetching memes:', error));
-        });
+        function goToHomePage() {
+            window.location.href = "index.html";
+        }
     </script>
 </body>
 </html>

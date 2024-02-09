@@ -1,1 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ugly Meme Gallery</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background-color: #ff00ff; /* Hot pink background color */
+            color: #00ff00; /* Neon green text color */
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
 
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #660099; /* Purple background color */
+        }
+
+        .meme {
+            margin-bottom: 20px;
+            border: 5px solid #ffff00; /* Yellow border */
+            border-radius: 20px;
+            padding: 10px;
+            background-color: #ffcc00; /* Yellow background color */
+        }
+
+        .meme img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .add-meme-form {
+            margin-top: 20px;
+        }
+
+        .add-meme-form input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .add-meme-form input[type="submit"] {
+            background-color: #ff0000; /* Red background color */
+            color: #00ffff; /* Cyan text color */
+            border: 5px solid #ffff00; /* Yellow border */
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition */
+        }
+
+        .add-meme-form input[type="submit"]:hover {
+            background-color: #00ff00; /* Green background color on hover */
+            color: #ff00ff; /* Magenta text color on hover */
+            border-color: #0000ff; /* Blue border color on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ugly Meme Gallery</h1>
+        <div class="meme-gallery"></div>
+        <form class="add-meme-form">
+            <input type="text" id="meme-url" placeholder="Enter meme URL">
+            <input type="submit" value="Add Meme">
+        </form>
+    </div>
+
+    <script>
+        document.querySelector('.add-meme-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+            var memeUrl = document.getElementById('meme-url').value;
+            if (memeUrl.trim() !== '') {
+                addMemeToGallery(memeUrl);
+                document.getElementById('meme-url').value = ''; // Clear input field
+                saveMemeUrl(memeUrl); // Save meme URL to GitHub
+            }
+        });
+
+        function addMemeToGallery(url) {
+            var memeGallery = document.querySelector('.meme-gallery');
+            var memeContainer = document.createElement('div');
+            memeContainer.classList.add('meme');
+            var memeImg = document.createElement('img');
+            memeImg.src = url;
+            memeContainer.appendChild(memeImg);
+            memeGallery.appendChild(memeContainer);
+        }
+
+        function saveMemeUrl(url) {
+            // Construct the URL to the GitHub repository's API
+            var apiUrl = 'https://api.github.com/repos/coachie/meme-gallery/contents/memes.json';
+
+            // Prepare the data to be sent
+            var data = {
+                message: 'Add new meme',
+                content: btoa(JSON.stringify({ url: url })),
+            };
+
+            // Send a POST request to add the meme URL
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'token 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', // Replace with your GitHub token
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to add meme URL');
+                }
+                console.log('Meme URL added successfully');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>

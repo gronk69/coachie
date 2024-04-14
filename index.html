@@ -93,6 +93,15 @@
             height: 200px; /* Height of the empty space */
         }
 
+        .bottom-section {
+            margin-top: 50px; /* Margin at the top */
+        }
+
+        .video-text {
+            font-size: 1.2em; /* Font size for the text */
+            font-weight: bold; /* Bold font weight */
+        }
+
         /* Define @font-face for Comic Sans MS */
         @font-face {
             font-family: 'Comic Sans MS';
@@ -132,6 +141,15 @@
 
     <!-- Empty space at the bottom -->
     <div class="empty-space"></div>
+
+    <!-- Bottom section with video -->
+    <div class="bottom-section">
+        <div class="video-text">Don't take it from me that I'm cool, take it from this guy:</div>
+        <video width="600" height="400" controls>
+            <source src="images/goodcameo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
 </body>
 
 </html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rice Purity Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        ol {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f0f8ff; /* Lighter blue */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        #itemInput {
+            width: calc(100% - 22px);
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        #itemInput, #addItemBtn, #showListBtn {
+            display: block;
+            margin: 10px auto;
+        }
+        .hidden {
+            display: none;
+        }
+        .result-item {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+        .dark-red { background-color: darkred; }
+        .light-red { background-color: #e57373; } /* Lighter red */
+        .grey { background-color: #ccc; } /* Light grey */
+        .light-green { background-color: lightgreen; }
+        .blue { background-color: deepskyblue; }
+        .grid-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .like-dislike-labels {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .like-dislike-label {
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+        }
+        .radio-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .radio-group label {
+            display: flex;
+            align-items: center;
+        }
+        input[type="checkbox"], input[type="radio"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+            border: 2px solid #ccc;
+            cursor: pointer;
+            position: relative;
+            margin-right: 10px;
+        }
+        input[type="checkbox"]:checked::after,
+        input[type="radio"]:checked::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background-color: #333;
+            border-radius: 50%;
+            display: block;
+        }
+        .dark-red input[type="radio"], .dark-red input[type="checkbox"] { border-color: darkred; }
+        .dark-red input[type="radio"]:checked::after, .dark-red input[type="checkbox"]:checked::after { background-color: black; }
+        .light-red input[type="radio"], .light-red input[type="checkbox"] { border-color: #e57373; }
+        .light-red input[type="radio"]:checked::after, .light-red input[type="checkbox"]:checked::after { background-color: black; }
+        .grey input[type="radio"], .grey input[type="checkbox"] { border-color: #ccc; }
+        .grey input[type="radio"]:checked::after, .grey input[type="checkbox"]:checked::after { background-color: black; }
+        .light-green input[type="radio"], .light-green input[type="checkbox"] { border-color: lightgreen; }
+        .light-green input[type="radio"]:checked::after, .light-green input[type="checkbox"]:checked::after { background-color: black; }
+        .blue input[type="radio"], .blue input[type="checkbox"] { border-color: deepskyblue; }
+        .blue input[type="radio"]:checked::after, .blue input[type="checkbox"]:checked::after { background-color: black; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Rice Purity Test</h1>
+        <div>
+            <button id="toggleVersionBtn">Switch to Likes/Dislikes Version</button>
+        </div>
+        <div id="inputSection">
+            <textarea id="itemInput" placeholder="Enter items separated by lines or commas"></textarea>
+            <button id="addItemBtn">Add Item(s)</button>
+            <button id="showListBtn">Show List</button>
+        </div>
+        <form id="ricePurityForm" class="hidden">
+            <ol id="itemList"></ol>
+            <button type="submit">Submit</button>
+        </form>
+        <form id="likesDislikesForm" class="hidden">
+            <ol id="likesDislikesList"></ol>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        let isRicePurity = true;
+
+        document.getElementById("toggleVersionBtn").addEventListener("click", function() {
+            isRicePurity = !isRicePurity;
+            document.getElementById("ricePurityForm").classList.toggle("hidden", !isRicePurity);
+            document.getElementById("likesDislikesForm").classList.toggle("hidden", isRicePurity);
+            document.getElementById("inputSection").style.display = "block";
+            document.getElementById("result").innerHTML = "";
+            this.textContent = isRicePurity ? "Switch to Likes/Dislikes Version" : "Switch to Rice Purity Test";
+        });
+
+        document.getElementById("addItemBtn").addEventListener("click", function() {
+            const itemInput = document.getElementById("itemInput");
+            const inputText = itemInput.value.trim();
+            if (inputText !== "") {
+                const items = inputText.split(/\n|,/).map(item => item.trim()).filter(item => item !== "");
+                items.forEach(newItem => {
+                    if (isRicePurity) {
+                        addRicePurityItem(newItem);
+                    } else {
+                        addLikesDislikesItem(newItem);
+                    }
+                });
+                itemInput.value = "";
+            }
+        });
+
+        document.getElementById("showListBtn").addEventListener("click", function() {
+            document.getElementById("inputSection").style.display = "none";
+            if (isRicePurity) {
+                document.getElementById("ricePurityForm").classList.remove("hidden");
+            } else {
+                document.getElementById("likesDislikesForm").classList.remove("hidden");
+            }
+        });
+
+        document.getElementById("ricePurityForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const checkboxes = document.querySelectorAll('#ricePurityForm input[type="checkbox"]');
+            let checkedCount = 0;
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    checkedCount++;
+                }
+            });
+            const totalItems = checkboxes.length;
+            const resultDiv = document.getElementById("result");
+            resultDiv.textContent = "You ticked " + checkedCount + " out of " + totalItems + " items.";
+        });
+
+        document.getElementById("likesDislikesForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const items = document.querySelectorAll('#likesDislikesList li');
+            const resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = "";
+            const gridContainer = document.createElement("div");
+            gridContainer.className = "grid-container";
+            items.forEach(item => {
+                const selectedInput = item.querySelector('input[type="radio"]:checked');
+                if (selectedInput) {
+                    const div = document.createElement("div");
+                    div.className = "result-item " + selectedInput.value;
+                    div.textContent = item.querySelector('label').textContent;
+                    gridContainer.appendChild(div);
+                }
+            });
+            resultDiv.appendChild(gridContainer);
+        });
+
+        function addRicePurityItem(newItem) {
+            const itemList = document.getElementById("itemList");
+            const li = document.createElement("li");
+            li.innerHTML = '<label><input type="checkbox" name="item">' + newItem + '</label>';
+            itemList.appendChild(li);
+        }
+
+        function addLikesDislikesItem(newItem) {
+            const likesDislikesList = document.getElementById("likesDislikesList");
+            const li = document.createElement("li");
+            li.innerHTML = `
+                <label>${newItem}</label>
+                <div class="like-dislike-labels">
+                    <label class="like-dislike-label dark-red"><input type="radio" name="${newItem}" value="dark-red"> Hate</label>
+                    <label class="like-dislike-label light-red"><input type="radio" name="${newItem}" value="light-red"> Dislike</label>
+                    <label class="like-dislike-label grey"><input type="radio" name="${newItem}" value="grey"> Unsure/Indifferent</label>
+                    <label class="like-dislike-label light-green"><input type="radio" name="${newItem}" value="light-green"> Like</label>
+                    <label class="like-dislike-label blue"><input type="radio" name="${newItem}" value="blue"> Love</label>
+                </div>
+            `;
+            likesDislikesList.appendChild(li);
+        }
+    </script>
+</body>
+</html>
